@@ -19,6 +19,7 @@ class Authors(db.Model):
     birth_location = db.Column(db.String())
     quote = db.Column(db.String())
     active = db.Column(db.Boolean(), default = False)
+    books = db.relationship('Books', cascade="all,delete", backref = 'author', lazy = True)
 
     def __init__(self, name, birthdate, death_date, birth_location, quote, active):
         self.name = name

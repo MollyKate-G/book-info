@@ -15,6 +15,7 @@ class Publishers(db.Model):
     publishing_company = db.Column(db.String(), nullable=False)
     first_publication = db.Column(db.String())
     active = db.Column(db.Boolean(), nullable=False, default = False)
+    books = db.relationship('Books', cascade="all,delete", backref = 'publisher', lazy = True)
 
     def __init__(self, publishing_company, first_publication, active = False):
         self.publishing_company = publishing_company

@@ -1,7 +1,6 @@
-from turtle import pu
 from flask import request, Flask, jsonify
-# from flask_sqlalchemy import SQLAlchemy
-# from flask_marshmallow import Marshmallow
+from flask_sqlalchemy import SQLAlchemy
+from flask_marshmallow import Marshmallow
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy import or_
 import uuid
@@ -22,8 +21,7 @@ class Books(db.Model):
     languages = db.Column(db.String())
     movie = db.Column(db.Boolean())
     genre = db.Column(db.String())
-    authors = db.relationship('Authors', cascade="all,delete", backref = 'authors')
-    publishers = db.relationship('Publishers', cascade="all,delete", backref = 'publishers')
+
 
     def __init__(self, author_id, publisher_id, title, languages, movie, genre):
         self.author_id = author_id
